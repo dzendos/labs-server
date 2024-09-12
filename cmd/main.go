@@ -18,7 +18,7 @@ func ImageHandler(w http.ResponseWriter, r *http.Request) {
 	ext := imgParts[1]
 	w.Header().Set("Content-Type", "image/"+ext)
 
-	b, err := os.ReadFile(".images/" +parts[len(parts)-1])
+	b, err := os.ReadFile("./images/" + parts[len(parts)-1])
 	if err != nil {
 		w.Write([]byte("unknown file"))
 	}
