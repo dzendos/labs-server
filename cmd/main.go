@@ -13,6 +13,7 @@ func ImageHandler(w http.ResponseWriter, r *http.Request) {
 	imgParts := strings.Split(parts[len(parts)-1], ".")
 	if len(imgParts) != 2 {
 		w.Write([]byte("incorrect file format"))
+		return
 	}
 
 	ext := imgParts[1]
@@ -21,6 +22,7 @@ func ImageHandler(w http.ResponseWriter, r *http.Request) {
 	b, err := os.ReadFile("./images/" + parts[len(parts)-1])
 	if err != nil {
 		w.Write([]byte("unknown file"))
+		return
 	}
 
 	_, err = w.Write(b)
